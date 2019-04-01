@@ -1,0 +1,151 @@
+
+body {
+    z-index: 1000;
+    background: linear-gradient(to left, rgb(233, 192, 115), rgb(245, 214, 157), white)
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: linear-gradient(black, #e5d691,rgb(54, 16, 54));
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+.app > div {
+    display: flex;
+    justify-content: center;
+}
+
+.hide{
+    display: none;
+}
+
+.modal button {
+    padding: 1em;
+    border-radius: .3em;
+    letter-spacing: 5px;
+    font-size: 20px;
+    background: linear-gradient(black, #e7dbb8,rgb(54, 16, 54));
+    box-shadow: 3px 3px 3px 5px #000000;
+}
+
+.listGroup {
+    display: flex;
+}
+.listgroupitem {
+    display: flex;
+    text-align: left;
+    box-shadow: 5px 5px 5px black;
+
+    font-size: 20px;
+    font: black;
+}
+
+table {
+    table-layout: fixed;
+    width: 80%;
+    position: left;
+}
+
+table td {
+    padding: 1em;
+    box-shadow: 1px 2px 2px;
+}
+
+table th {
+    padding: 1em;
+}
+
+/* DATA ANIMATIONS */
+
+/* KEYFRAMES*/
+
+@-webkit-keyframes groupisready {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-moz-keyframes groupisready {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-o-keyframes groupisready {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes groupisready {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .scoreboard {
+    text-align: center;
+    box-shadow: 2px 2px 2px orange;
+    padding: 10px;
+    animation: mymove 1s;
+}
+
+.groupready {
+    background-color: green;
+    animation: groupisready 2s;
+    background: linear-gradient(to left, rgb(245, 242, 242), rgb(201, 233, 223) 50%, rgb(177, 224, 193) 75%, rgb(86, 233, 118) 75%);
+}
+
+.notready {
+    background-color: rgb(173, 114, 114);
+    animation: groupisready 2s;
+    background: linear-gradient(to left, rgb(245, 242, 242), rgb(204, 166, 166) 50%, rgb(204, 174, 174) 75%, rgb(194, 65, 71) 75%);
+}
+
+img {
+    width: 500px;
+    height: 500px;
+}
+
+#tablecheckmark {
+    font-size: 22px;
+}
+
+/*BUTTON CONTAINER*/
+.button {
+    margin: 1em;
+    border-radius: .2em;
+    padding: .7em;
+    background: linear-gradient(rgb(224, 199, 114), #f0e296,rgb(151, 139, 33));
+}
+
+
+.gameisongoing {
+    animation: groupisready 1s;
+    box-shadow: -1px -1px -1px white;
+    color: grey;    
+}
+
+.pending{
+    color: rgb(194, 65, 71);
+}
+.ready{
+    color: rgb(59, 163, 81);
+}
+
+.gameongoing {
+    color: rgb(194, 65, 71);
+}
+
+.completed {
+    color: rgb(59, 163, 81);
+}
+
+
+

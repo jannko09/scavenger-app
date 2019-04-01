@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h2>V. Validate username</h2>
+    <form id="validateUsername">
+        <input name="username" type="text" placeholder="username">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+    <br>
+    <h2>1. Create group</h2>
+    <form id="createGroup">
+        <input name="groupname" type="text" placeholder="groupname">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+    <br>
+    <h2>9. New User to existing group</h2>
+    <form id="newUser">
+        <input name="groupId" type="number" placeholder="groupId">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+    <h2>3. Group Ready</h2>
+    <form id="groupReady">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+    <br>
+    <h2>7. Correct Clue</h2>
+    <form id="correctClue">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+    <br>
+    <br>
+    <h2>Color game init</h2>
+    <form id="colorgameInit">
+        <button type="submit">
+            Press me!
+        </button>
+    </form>
+</body>
+<script>
+    $(function () {
+        var socket = io();
+        var username = '';
+
+        $('#validateUsername').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            var data = {
+                username: $('#validateUsername input[name=username]').val()
+            }
+            console.log('/////////////// REQUEST: ///////////////');
+            console.log(data);
+            socket.emit('validateuser', data);
+            return false;
+        });
+
+        $('#createGroup').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            var data = {
+                groupName: $('#createGroup input[name=groupname]').val(),
+            }
+            socket.emit('newgroup', data);
+            return false;
+        });
+
+        $('#newUser').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            var data = {
+                groupId: parseInt($('#newUser input[name=groupId]').val()),
+            }
+            console.log('/////////////// REQUEST: ///////////////');
+            console.log(data);
+            socket.emit('newuser', data);
+            return false;
+        });
+
+        $('#groupReady').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            console.log('/////////////// REQUEST: no data ///////////////');
+            socket.emit('groupready');
+            return false;
+        });
+        $('#correctClue').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            console.log('/////////////// REQUEST: no data ///////////////');
+            socket.emit('cluecorrect');
+            return false;
+        });
+        $('#colorgameInit').submit(function (e) {
+            e.preventDefault(); // prevents page reloading
+            console.log('/////////////// REQUEST: no data ///////////////');
+            socket.emit('colorgameinit');
+            return false;
+        });
+
+
+        socket.on('uservalidation', function(data){
+            username = data.username;
+            console.log('/////////////// RESPONSE: ///////////////:');
+            console.log(data);
+        });
+
+        socket.on('groupvalidation', function(data){
+            console.log('/////////////// RESPONSE: ///////////////:');
+            console.log(data);
+        });
+
+        socket.on('groupjoin', function(data){
+            console.log('/////////////// RESPONSE: ///////////////:');
+            console.log(data);
+        })
+
+        socket.on('letsplay', function(data){
+            console.log('/////////////// RESPONSE: ///////////////:');
+            console.log(data);
+        })
+
+        socket.on('increasescore', function(data){
+            console.log('/////////////// RESPONSE: ///////////////:');
+            console.log(data);
+        })
+
+        socket.on('startgame', function(data){
+            console.log('/////////////// Game started: ///////////////:');
+            console.log(data);
+        })
+
+        socket.on('colorgameinit', function(data){
+            console.log('/////////////// Game started: ///////////////:');
+            console.log(data);
+        })
+    });
+
+</script>
+
+</html>
